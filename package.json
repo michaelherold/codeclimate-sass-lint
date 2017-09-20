@@ -1,0 +1,27 @@
+{
+  "name": "codeclimate-sass-lint",
+  "version": "1.0.0",
+  "description": "A CodeClimate engine for running sass-lint",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelherold/codeclimate-sass-lint.git"
+  },
+  "keywords": [
+    "sass-lint",
+    "codeclimate",
+    "linter"
+  ],
+  "author": "Michael Herold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelherold/codeclimate-sass-lint/issues"
+  },
+  "homepage": "https://github.com/michaelherold/codeclimate-sass-lint#readme",
+  "dependencies": {
+    "sass-lint": "^1.11.1"
+  }
+}
