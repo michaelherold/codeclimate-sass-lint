@@ -23,7 +23,7 @@ Awesome! We strive to be welcoming to everyone. Check out the [contributing guid
 
 For help with Sass-lint, [check out their documentation].
 
-If you're running into a Code Climate issue, first check out our [engine documentation][#usage] and look over any existing [issues][issues], as your question may have already been covered. If not, please [open an issue][open-issue] and we'll see what we can do to help.
+If you're running into a Code Climate issue, first check out our [engine documentation](#usage) and look over any existing [issues][issues], as your question may have already been covered. If not, please [open an issue][open-issue] and we'll see what we can do to help.
 
 [check out their documentation]: https://github.com/sasstools/sass-lint
 [issues]: https://github.com/michaelherold/codeclimate-sass-lint/issues
