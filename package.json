@@ -4,6 +4,7 @@
   "description": "A CodeClimate engine for running sass-lint",
   "main": "src/index.js",
   "scripts": {
+    "check": "npm run test && npm run lint",
     "coverage": "nyc report --reporter=lcov",
     "doc": "jsdoc --configure .jsdoc.json --verbose",
     "inch": "inchjs",

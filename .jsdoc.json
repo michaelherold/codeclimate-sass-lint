@@ -2,6 +2,7 @@
   "opts": {
     "destination": "./doc/",
     "encoding": "utf8",
+    "readme": "README.md",
     "recurse": true,
     "template": "./node_modules/minami"
   },
