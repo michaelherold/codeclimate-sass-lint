@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 let configPath = "/config.json";
 let codeDir;
 let debug = false;
@@ -13,7 +15,6 @@ const run = (console, runOptions = {}) => {
 
   codeDir = runOptions.dir;
   if (runOptions.configPath) { configPath = runOptions.configPath; }
-
 };
 
 module.exports = { run };

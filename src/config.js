@@ -4,7 +4,7 @@ const defaults = {
   config: null,
   enabled: true,
   excludePaths: [],
-  includePaths: ["./"],
+  includePaths: ["./"]
 };
 
 
@@ -18,6 +18,7 @@ const defaults = {
  */
 const merge = (base, extras) => {
   const merged = Object.assign({}, base);
+  let key;
 
   for (key in extras) {
     if (extras.hasOwnProperty(key) && defaults.hasOwnProperty(key)) {
@@ -40,7 +41,7 @@ const toLinterConfig = (config) => {
     config: config.config,
     files: {
       ignore: config.excludePaths
-    },
+    }
   };
 
   return linterConfig;
@@ -62,7 +63,7 @@ module.exports = {
     let config = defaults;
 
     if (fs.existsSync(file)) {
-      const extraConfig = JSON.parse(fs.readFileSync(file))
+      const extraConfig = JSON.parse(fs.readFileSync(file));
 
       config = merge(config, extraConfig);
     }

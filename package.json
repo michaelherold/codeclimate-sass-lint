@@ -7,6 +7,7 @@
     "coverage": "nyc report --reporter=lcov",
     "doc": "jsdoc --configure .jsdoc.json --verbose",
     "inch": "inchjs",
+    "lint": "eslint src/**/*.js",
     "test": "nyc --reporter=html mocha -r ./test/helper --reporter dot",
     "tdd": "mocha -r ./test/helper --reporter dot --watch"
   },
