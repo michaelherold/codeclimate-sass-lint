@@ -1,0 +1,1 @@
+const sasslint = require("sasslint");
