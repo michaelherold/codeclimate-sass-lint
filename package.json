@@ -4,7 +4,9 @@
   "description": "A CodeClimate engine for running sass-lint",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "nyc report --reporter=lcov",
+    "test": "nyc --reporter=html mocha -r ./test/helper --reporter dot",
+    "tdd": "mocha -r ./test/helper --reporter dot --watch"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,14 @@
   "homepage": "https://github.com/michaelherold/codeclimate-sass-lint#readme",
   "dependencies": {
     "sass-lint": "^1.11.1"
+  },
+  "devDependencies": {
+    "app-module-path": "^2.2.0",
+    "blanket": "^1.2.3",
+    "chai": "^4.1.2",
+    "eslint": "^4.7.1",
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1",
+    "temp-write": "^3.3.0"
   }
 }
