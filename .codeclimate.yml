@@ -1,4 +1,6 @@
 engines:
+  duplication:
+    enabled: true
   eslint:
     enabled: true
     channel: eslint-4
