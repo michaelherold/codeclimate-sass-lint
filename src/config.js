@@ -7,35 +7,6 @@ const defaults = {
   includePaths: ["./"],
 };
 
-/**
- * Constructs a configuration object from a given JSON file.
- *
- * @public
- * @param {string} file - The path to the configuration file.
- * @return {object} The configuration file merged with the defaults.
- */
-const fromFile = (file = "/config.json") => {
-  let config = defaults;
-
-  if (fs.existsSync(file)) {
-    const extraConfig = JSON.parse(fs.readFileSync(file))
-
-    config = merge(config, extraConfig);
-  }
-
-  return toLinterConfig(config);
-};
-
-/**
- * Constructs a configuration object from a given object.
- *
- * @public
- * @param {object} config - The object to use when constructing the configuration.
- * @return {object} The config object merged with the defaults.
- */
-const fromObject = (config = {}) => {
-  return toLinterConfig(merge(defaults, config));
-};
 
 /**
  * Merges two configuration objects together, favoring the new content.
@@ -75,7 +46,38 @@ const toLinterConfig = (config) => {
   return linterConfig;
 };
 
+/**
+ * Handles the CodeClimate config.json format and converts it for sass-lint.
+ * @module config
+ */
 module.exports = {
-  fromFile,
-  fromObject
+  /**
+   * Constructs a configuration object from a given JSON file.
+   *
+   * @public
+   * @param {string} file - The path to the configuration file.
+   * @return {object} The configuration file merged with the defaults.
+   */
+  fromFile (file = "/config.json") {
+    let config = defaults;
+
+    if (fs.existsSync(file)) {
+      const extraConfig = JSON.parse(fs.readFileSync(file))
+
+      config = merge(config, extraConfig);
+    }
+
+    return toLinterConfig(config);
+  },
+
+  /**
+   * Constructs a configuration object from a given object.
+   *
+   * @public
+   * @param {object} config - The object to use when constructing the configuration.
+   * @return {object} The config object merged with the defaults.
+   */
+  fromObject (config = {}) {
+    return toLinterConfig(merge(defaults, config));
+  }
 };

@@ -1,0 +1,23 @@
+{
+  "opts": {
+    "destination": "./doc/",
+    "encoding": "utf8",
+    "recurse": true,
+    "template": "./node_modules/minami"
+  },
+  "plugins": [],
+  "source": {
+    "include": ["src"],
+    "includePattern": "\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "useLongnameInNav": false,
+    "showInheritedInNav": true
+  }
+}

@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "coverage": "nyc report --reporter=lcov",
+    "doc": "jsdoc --configure .jsdoc.json --verbose",
     "test": "nyc --reporter=html mocha -r ./test/helper --reporter dot",
     "tdd": "mocha -r ./test/helper --reporter dot --watch"
   },
@@ -31,6 +32,8 @@
     "blanket": "^1.2.3",
     "chai": "^4.1.2",
     "eslint": "^4.7.1",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
     "mocha": "^3.5.3",
     "nyc": "^11.2.1",
     "temp-write": "^3.3.0"
