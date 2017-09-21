@@ -83,4 +83,4 @@ This engine is versioned based on the versioning scheme of Sass-Lint. It uses th
 
 The engine is available as open source under the terms of the [MIT License][license].
 
-[license]: http://opensource.org/licenses/MIT.
+[license]: http://opensource.org/licenses/MIT
