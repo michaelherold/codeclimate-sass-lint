@@ -1,1 +1,16 @@
 #!/usr/bin/env node
+
+const path = require("path");
+const { run } = require("../src/sasslint");
+
+let CODE_DIR;
+
+if (process.argv.length > 2) {
+  CODE_DIR = path.join(process.cwd(), process.argv[process.argv.length - 1]);
+}
+else {
+  CODE_DIR = "/code";
+}
+
+process.chdir(CODE_DIR);
+run(console, { dir: CODE_DIR });
