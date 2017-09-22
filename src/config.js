@@ -1,32 +1,20 @@
 const fs = require("fs");
-
-const defaults = {
-  config: null,
-  enabled: true,
-  excludePaths: [],
-  includePaths: ["./"]
-};
-
+const deepMerge = require("deepmerge");
 
 /**
- * Merges two configuration objects together, favoring the new content.
+ * The default configuration for the engine.
  *
  * @private
- * @param {object} base - The base object to use as a default.
- * @param {object} extras - The new configuration to merge into the base.
- * @return {object} The configuration object after the merge.
- */
-const merge = (base, extras) => {
-  const merged = Object.assign({}, base);
-  let key;
-
-  for (key in extras) {
-    if (extras.hasOwnProperty(key) && defaults.hasOwnProperty(key)) {
-      merged[key] = extras[key];
-    }
-  }
-
-  return merged;
+ * @return {object}
+ **/
+const defaultEngineConfig = {
+  config: {
+    file: null
+  },
+  enabled: true,
+  exclude_paths: [],
+  include_paths: ["./"],
+  rules: {}
 };
 
 /**
@@ -36,15 +24,18 @@ const merge = (base, extras) => {
  * @param {object} config - The config.json styles configuration.
  * @return {object} The sass-lint style configuration.
  */
-const toLinterConfig = (config) => {
-  const linterConfig = {
-    config: config.config,
+const toSassLintConfig = (engineConfig) => {
+  const sassLintConfig = {
+    config: engineConfig.config.file,
+    enabled: engineConfig.enabled,
     files: {
-      ignore: config.excludePaths
-    }
+      ignore: engineConfig.exclude_paths,
+      include: engineConfig.include_paths
+    },
+    rules: engineConfig.rules
   };
 
-  return linterConfig;
+  return sassLintConfig;
 };
 
 /**
@@ -57,18 +48,18 @@ module.exports = {
    *
    * @public
    * @param {string} file - The path to the configuration file.
-   * @return {object} The configuration file merged with the defaults.
+   * @return {object} The configuration file merged with the defaultEngineConfig.
    */
   fromFile (file = "/config.json") {
-    let config = defaults;
+    let engineConfig = Object.assign({}, defaultEngineConfig);
 
     if (fs.existsSync(file)) {
       const extraConfig = JSON.parse(fs.readFileSync(file));
 
-      config = merge(config, extraConfig);
+      engineConfig = deepMerge(engineConfig, extraConfig);
     }
 
-    return toLinterConfig(config);
+    return toSassLintConfig(engineConfig);
   },
 
   /**
@@ -76,9 +67,9 @@ module.exports = {
    *
    * @public
    * @param {object} config - The object to use when constructing the configuration.
-   * @return {object} The config object merged with the defaults.
+   * @return {object} The config object merged with the defaultEngineConfig.
    */
   fromObject (config = {}) {
-    return toLinterConfig(merge(defaults, config));
+    return toSassLintConfig(deepMerge(defaultEngineConfig, config));
   }
 };
