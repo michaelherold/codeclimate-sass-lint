@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/michaelherold/codeclimate-sass-lint#readme",
   "dependencies": {
+    "commander": "^2.11.0",
     "deepmerge": "^1.5.2",
     "glob": "^7.1.2",
     "sass-lint": "^1.11.1"

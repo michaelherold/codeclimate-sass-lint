@@ -1,16 +1,31 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
-const path = require("path");
+const meta = require("../package.json");
+const program = require("commander");
 const { run } = require("../src/sasslint");
 
-let CODE_DIR;
+let runOptions = {
+  configPath: "/config.json",
+  dir: "/code"
+};
 
-if (process.argv.length > 2) {
-  CODE_DIR = path.join(process.cwd(), process.argv[process.argv.length - 1]);
-}
-else {
-  CODE_DIR = "/code";
+program
+  .version(meta.version)
+  .usage("[options] <dir>")
+  .option("-c, --config <path>", "path to custom config file")
+  .parse(process.argv);
+
+if (program.config) {
+  runOptions.configPath = program.config;
 }
 
-process.chdir(CODE_DIR);
-run(console, { dir: CODE_DIR });
+if (program.args.length === 1) {
+  runOptions.dir = program.args[0];
+} else if (program.args.length > 1) {
+  console.log("You passed more than one root directory!");
+  process.exit(1);
+}
+
+process.chdir(runOptions.dir);
+run(console, runOptions);
