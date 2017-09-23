@@ -3,6 +3,26 @@ const glob = require("glob");
 const pattern = "**/*.s[a|c]ss";
 
 /**
+ * Constructs a blog search term for a path.
+ *
+ * @private
+ * @param {string} root - The root folder to search for files in.
+ * @param {string} path - The path glob to search for.
+ * @return {string}
+ */
+const buildSearchTerm = (root, path) => {
+  let searchTerm;
+
+  if (path.slice(-1) === "/") {
+    searchTerm = `${root}/${path}${pattern}`;
+  } else {
+    searchTerm = `${root}/${path}`;
+  }
+
+  return searchTerm;
+};
+
+/**
  * Builds a list of excluded files from the engine's exclude paths.
  *
  * @private
@@ -39,36 +59,13 @@ const buildInclusions = (root, includePaths) => {
 };
 
 /**
- * Constructs a blog search term for a path.
- *
- * @private
- * @param {string} root - The root folder to search for files in.
- * @param {string} path - The path glob to search for.
- * @return {string}
- */
-const buildSearchTerm = (root, path) => {
-  let searchTerm;
-
-  if (path.slice(-1) === "/") {
-    searchTerm = `${root}/${path}${pattern}`;
-  }
-  else {
-    searchTerm = `${root}/${path}`;
-  }
-
-  return searchTerm;
-};
-
-/**
  * Checks whether a file is a Sass file.
  *
  * @private
  * @param {string} file - The filename to inspect.
  * @return {boolean}
  */
-const isSass = (file) => {
-  return file.endsWith(".sass") || file.endsWith(".scss");
-}
+const isSass = file => file.endsWith(".sass") || file.endsWith(".scss");
 
 /**
  * Handles the construction of lists of files to analyze.
@@ -91,12 +88,9 @@ module.exports = {
 
     let result = buildInclusions(root, engineConfig.files.include);
     let exclusions = buildExclusions(root, engineConfig.files.ignore);
+    const isExcluded = file => exclusions.indexOf(file) !== -1;
 
-    const isExcluded = (file) => {
-      return exclusions.indexOf(file) !== -1;
-    }
-
-    result = result.filter((file) => { return !isExcluded(file) && isSass(file); });
+    result = result.filter(file => !isExcluded(file) && isSass(file));
 
     return result;
   }
