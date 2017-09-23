@@ -63,7 +63,7 @@ describe("file-list", () => {
         before(() => {
           engineConfig = config.fromObject({
             exclude_paths: ["src/b.sass"],
-            include_paths: ["src/"],
+            include_paths: ["src/"]
           });
         });
 

@@ -48,7 +48,7 @@ module.exports = {
     const cwd = process.cwd();
 
     process.chdir(root);
-    fn()
+    fn();
     process.chdir(cwd);
   }
 };
