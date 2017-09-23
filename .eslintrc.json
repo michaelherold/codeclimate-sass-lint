@@ -20,6 +20,7 @@
     "no-console": 0,
     "no-shadow-restricted-names": 2,
     "no-undef": 2,
+    "no-unused-vars": [2, { "argsIgnorePattern": "^_" } ],
     "no-use-before-define": 2,
     "quotes": [2, "double"],
     "radix": 2,
