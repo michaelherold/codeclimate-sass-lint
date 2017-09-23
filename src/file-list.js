@@ -66,8 +66,8 @@ module.exports = {
       return glob.sync(`${root}/${pattern}`);
     }
 
-    let result = searchPaths(root, engineConfig.files.include);
-    let exclusions = searchPaths(root, engineConfig.files.ignore);
+    let result = searchPaths(root, engineConfig.include_paths);
+    let exclusions = searchPaths(root, engineConfig.exclude_paths);
     const isExcluded = file => exclusions.indexOf(file) !== -1;
 
     result = result.filter(file => !isExcluded(file) && isSass(file));

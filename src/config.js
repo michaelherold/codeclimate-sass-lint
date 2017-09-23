@@ -37,26 +37,6 @@ const combine = (first, second) => {
   return engineConfig;
 };
 
-/**
- * Converts the config.json file format into sass-lint style.
- *
- * @private
- * @param {object} config - The config.json styles configuration.
- * @return {object} The sass-lint style configuration.
- */
-const toSassLintConfig = (engineConfig) => {
-  const sassLintConfig = {
-    config: engineConfig.config.file,
-    enabled: engineConfig.enabled,
-    files: {
-      ignore: engineConfig.exclude_paths,
-      include: engineConfig.include_paths
-    },
-    rules: engineConfig.rules
-  };
-
-  return sassLintConfig;
-};
 
 /**
  * Handles the CodeClimate config.json format and converts it for sass-lint.
@@ -79,7 +59,7 @@ module.exports = {
       engineConfig = combine(engineConfig, extraConfig);
     }
 
-    return toSassLintConfig(engineConfig);
+    return engineConfig;
   },
 
   /**
@@ -94,6 +74,24 @@ module.exports = {
 
     engineConfig = combine(engineConfig, config);
 
-    return toSassLintConfig(engineConfig);
+    return engineConfig;
+  },
+
+  /**
+   * Converts the config.json file format into sass-lint style.
+   *
+   * @private
+   * @param {object} engineConfig - The config.json style configuration.
+   * @return {object} The sass-lint style configuration.
+   */
+  toSassLintConfig (engineConfig) {
+    const sassLintConfig = {
+      options: {
+        "config-file": engineConfig.config.file
+      },
+      rules: engineConfig.rules
+    };
+
+    return sassLintConfig;
   }
 };

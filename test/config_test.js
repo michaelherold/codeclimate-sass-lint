@@ -2,12 +2,12 @@ const config = require("config");
 const temp = require("temp-write");
 
 const defaultConfig = {
-  config: null,
-  enabled: true,
-  files: {
-    ignore: [],
-    include: ["./"]
+  config: {
+    file: null
   },
+  enabled: true,
+  exclude_paths: [],
+  include_paths: ["./"],
   rules: {}
 };
 
@@ -47,17 +47,17 @@ describe("config", () => {
         const subject = config.fromFile(file);
 
         expect(subject).to.deep.equal({
-          config: "my-sass-lint.yml",
-          enabled: true,
-          files: {
-            ignore: [
-              "config/",
-              ".gitignore"
-            ],
-            include: [
-              "app/"
-            ]
+          config: {
+            file: "my-sass-lint.yml"
           },
+          enabled: true,
+          exclude_paths: [
+            "config/",
+            ".gitignore"
+          ],
+          include_paths: [
+            "app/"
+          ],
           rules: {
             indentation: [
               2,
@@ -84,14 +84,52 @@ describe("config", () => {
         const subject = config.fromObject(extras);
 
         expect(subject).to.deep.equal({
-          config: "my-sass-lint.yml",
-          enabled: true,
-          files: {
-            ignore: [],
-            include: ["./"]
+          config: {
+            file: "my-sass-lint.yml"
           },
+          enabled: true,
+          exclude_paths: [],
+          include_paths: ["./"],
           rules: {}
         });
+      });
+    });
+  });
+
+  describe("#toSassLintConfig", () => {
+    it("converts engine configuration into sass-lint configuration", () => {
+      const engineConfig = {
+        config: {
+          file: "my-sass-lint.yml"
+        },
+        enabled: true,
+        exclude_paths: [
+          "config/",
+          ".gitignore"
+        ],
+        include_paths: [
+          "app/"
+        ],
+        rules: {
+          indentation: [
+            2,
+            { size: 2 }
+          ]
+        }
+      };
+
+      const subject = config.toSassLintConfig(engineConfig);
+
+      expect(subject).to.deep.equal({
+        options: {
+          "config-file": "my-sass-lint.yml"
+        },
+        rules: {
+          indentation: [
+            2,
+            { size: 2 }
+          ]
+        }
       });
     });
   });
