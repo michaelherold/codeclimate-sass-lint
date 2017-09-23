@@ -18,6 +18,26 @@ const defaultEngineConfig = {
 };
 
 /**
+ * Combines two configuration objects
+ *
+ * @private
+ * @param {object} first - The first object.
+ * @param {object} second - The second object.
+ * @return {object} The combined object.
+ */
+const combine = (first, second) => {
+  let engineConfig = Object.assign({}, first);
+
+  engineConfig = deepMerge(engineConfig, second);
+
+  if (engineConfig.include_paths.length > 1) {
+    engineConfig.include_paths.shift();
+  }
+
+  return engineConfig;
+};
+
+/**
  * Converts the config.json file format into sass-lint style.
  *
  * @private
@@ -56,7 +76,7 @@ module.exports = {
     if (fs.existsSync(file)) {
       const extraConfig = JSON.parse(fs.readFileSync(file));
 
-      engineConfig = deepMerge(engineConfig, extraConfig);
+      engineConfig = combine(engineConfig, extraConfig);
     }
 
     return toSassLintConfig(engineConfig);
@@ -70,6 +90,10 @@ module.exports = {
    * @return {object} The config object merged with the defaultEngineConfig.
    */
   fromObject (config = {}) {
-    return toSassLintConfig(deepMerge(defaultEngineConfig, config));
+    let engineConfig = Object.assign({}, defaultEngineConfig);
+
+    engineConfig = combine(engineConfig, config);
+
+    return toSassLintConfig(engineConfig);
   }
 };

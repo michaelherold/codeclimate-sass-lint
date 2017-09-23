@@ -55,7 +55,6 @@ describe("config", () => {
               ".gitignore"
             ],
             include: [
-              "./",
               "app/"
             ]
           },
