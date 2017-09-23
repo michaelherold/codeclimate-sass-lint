@@ -23,42 +23,6 @@ const buildSearchTerm = (root, path) => {
 };
 
 /**
- * Builds a list of excluded files from the engine's exclude paths.
- *
- * @private
- * @param {string} root - The root folder to search for files in.
- * @param {string[]} excludePaths - The path globs to exclude.
- * @return {string[]}
- */
-const buildExclusions = (root, excludePaths) => {
-  let exclusions = [];
-
-  excludePaths.forEach((path) => {
-    exclusions = exclusions.concat(glob.sync(buildSearchTerm(root, path)));
-  });
-
-  return exclusions;
-};
-
-/**
- * Builds a list of included files from the engine's nclude paths.
- *
- * @private
- * @param {string} root - The root folder to search for files in.
- * @param {string[]} includePaths - The path globs to include.
- * @return {string[]}
- */
-const buildInclusions = (root, includePaths) => {
-  let result = [];
-
-  includePaths.forEach((path) => {
-    result = result.concat(glob.sync(buildSearchTerm(root, path)));
-  });
-
-  return result;
-};
-
-/**
  * Checks whether a file is a Sass file.
  *
  * @private
@@ -66,6 +30,22 @@ const buildInclusions = (root, includePaths) => {
  * @return {boolean}
  */
 const isSass = file => file.endsWith(".sass") || file.endsWith(".scss");
+
+/**
+ * Builds a list of files from a list of path globs.
+ *
+ * @private
+ * @param {string} root - The root folder to search for files in.
+ * @param {string[]} paths - The path globs to include.
+ * @return {string[]}
+ */
+const searchPaths = (root, paths) => {
+  let results = [];
+
+  paths.forEach(path => results = results.concat(glob.sync(buildSearchTerm(root, path))));
+
+  return results;
+};
 
 /**
  * Handles the construction of lists of files to analyze.
@@ -86,8 +66,8 @@ module.exports = {
       return glob.sync(`${root}/${pattern}`);
     }
 
-    let result = buildInclusions(root, engineConfig.files.include);
-    let exclusions = buildExclusions(root, engineConfig.files.ignore);
+    let result = searchPaths(root, engineConfig.files.include);
+    let exclusions = searchPaths(root, engineConfig.files.ignore);
     const isExcluded = file => exclusions.indexOf(file) !== -1;
 
     result = result.filter(file => !isExcluded(file) && isSass(file));
