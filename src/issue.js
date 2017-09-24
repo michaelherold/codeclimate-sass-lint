@@ -24,7 +24,9 @@ module.exports = {
       type: "issue",
       check_name: lint.ruleId,
       description: lint.message,
-      content: contentsFor(lint.ruleId),
+      content: {
+        body: contentsFor(lint.ruleId),
+      },
       categories: categoriesFor(lint.ruleId),
       location: {
         path: lint.path,
