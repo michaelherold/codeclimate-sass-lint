@@ -16,12 +16,8 @@ program
   .option("--debug", "enables the output of debug information")
   .parse(process.argv);
 
-if (program.config) {
-  runOptions.configPath = program.config;
-}
-if (program.debug) {
-  runOptions.debug = true;
-}
+if (program.config) { runOptions.configPath = program.config; }
+if (program.debug)  { runOptions.debug = true; }
 
 if (program.args.length === 1) {
   runOptions.dir = program.args[0];
