@@ -13,10 +13,14 @@ program
   .version(meta.version)
   .usage("[options] <dir>")
   .option("-c, --config <path>", "path to custom config file")
+  .option("--debug", "enables the output of debug information")
   .parse(process.argv);
 
 if (program.config) {
   runOptions.configPath = program.config;
+}
+if (program.debug) {
+  runOptions.debug = true;
 }
 
 if (program.args.length === 1) {
