@@ -3,12 +3,11 @@ FROM node:8.5-alpine
 LABEL maintainer "Michael J. Herold <michael@michaeljherold.com>"
 
 WORKDIR /usr/src/app
-COPY package.json ./
+COPY engine.json package*.json ./
 
-RUN npm install --production && \
-    adduser -u -9000 -D app
+RUN npm install --silent && \
+  adduser -u 9000 -D app
 
-COPY engine.json /
 COPY . ./
 RUN chown -R app:app ./
 

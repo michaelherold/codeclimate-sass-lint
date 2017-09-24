@@ -5,7 +5,10 @@ set -e
 version=$1
 
 printf "Pulling content for sass-lint %s\n" "$version"
-git clone --quiet --branch "v$version" https://github.com/sasstools/sass-lint.git /tmp/sass-lint >/dev/null 2>&1
+git clone --quiet --branch "v$version" https://github.com/sasstools/sass-lint.git /tmp/sass-lint || {
+  printf "  ... Failed to pull sass-lint repository!"
+  exit 1
+}
 mkdir -p config/contents
 cp -r /tmp/sass-lint/docs/rules/* config/contents
 rm -rf /tmp/sass-lint
