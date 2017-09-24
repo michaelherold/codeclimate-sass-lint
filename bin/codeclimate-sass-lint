@@ -27,4 +27,4 @@ if (program.args.length === 1) {
 }
 
 process.chdir(runOptions.dir);
-run(console, runOptions);
+run(runOptions);
