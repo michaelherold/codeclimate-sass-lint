@@ -64,6 +64,11 @@ engines:
     enabled: true
     config:
       file: my_custom_sass_lint.yml
+    debug: true
+    rules:
+      indentation:
+        - 2
+        - size: 2
 exclude_paths:
   - ignored_directory/
 ```
@@ -71,6 +76,8 @@ exclude_paths:
 Most of the configuration lives under the `engines.sass_lint` key. The options are as follows:
 
 * `config.file` - The Sass-Lint configuration file you want to use as a base.
+* `debug` - Set this to true to output timing and debug information from the engine.
+* `rules` - Configure this in the same way you configure rules in `.sass-lint.yml`. These will override any settings you have in your configuration file.
 * Global configuration like `exclude_paths` is also included in the engine's configuration. See the [Code Climate documentation] for more information.
 
 [Code Climate documentation]: https://docs.codeclimate.com/docs/configuring-your-code-climate-analysis
