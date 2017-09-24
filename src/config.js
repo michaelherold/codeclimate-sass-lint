@@ -11,6 +11,7 @@ const defaultEngineConfig = {
   config: {
     file: null
   },
+  debug: false,
   enabled: true,
   exclude_paths: [],
   include_paths: ["./"],

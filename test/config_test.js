@@ -6,6 +6,7 @@ const defaultConfig = {
     file: null
   },
   enabled: true,
+  debug: false,
   exclude_paths: [],
   include_paths: ["./"],
   rules: {}
@@ -51,6 +52,7 @@ describe("config", () => {
             file: "my-sass-lint.yml"
           },
           enabled: true,
+          debug: false,
           exclude_paths: [
             "config/",
             ".gitignore"
@@ -87,6 +89,7 @@ describe("config", () => {
           config: {
             file: "my-sass-lint.yml"
           },
+          debug: false,
           enabled: true,
           exclude_paths: [],
           include_paths: ["./"],
@@ -103,6 +106,7 @@ describe("config", () => {
           file: "my-sass-lint.yml"
         },
         enabled: true,
+        debug: false,
         exclude_paths: [
           "config/",
           ".gitignore"
