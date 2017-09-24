@@ -18,7 +18,7 @@ const run = (options = {}) => {
   let files = withTiming("buildFileList", () => filesToInspect(options.dir, engineConfig));
   let lints = withTiming("analyze", () => analyzeFiles(files, engineConfig));
 
-  withTiming("report", () => lints.forEach(reportIssuesForFile));
+  withTiming("report", () => lints.forEach((lint) => reportIssuesForFile(options.dir, lint)));
 };
 
 /**

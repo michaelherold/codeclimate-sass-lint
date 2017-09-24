@@ -19,7 +19,13 @@ describe("issue", () => {
       expect(subject.description).to.equal("Strings must use single quotes");
       expect(subject.content.body).to.match(/# Quotes/);
       expect(subject.categories).to.deep.equal(["Style"]);
-      expect(subject.location).to.deep.equal({path: "test.scss", begin: {line: 60, column: 12}});
+      expect(subject.location).to.deep.equal({
+        path: "test.scss",
+        positions: {
+          begin: {line: 60, column: 12},
+          end: {line: 60, column: 12}
+        }
+      });
       expect(subject.remediation_points).to.equal(50000);
       expect(subject.severity).to.equal("major");
     });

@@ -23,7 +23,7 @@ describe("reporting", () => {
             column: 12,
             message: "Strings must use single quotes",
             severity: 1,
-            path: "test.scss"
+            path: "/src/test.scss"
           },
           {
             ruleId: "quotes",
@@ -31,12 +31,12 @@ describe("reporting", () => {
             column: 12,
             message: "Strings must use single quotes",
             severity: 1,
-            path: "test.scss"
+            path: "/src/test.scss"
           }
         ]
       };
 
-      reporting.reportIssuesForFile(file);
+      reporting.reportIssuesForFile("/src", file);
 
       expect(console.log).to.have.been.calledTwice;
     });

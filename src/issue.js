@@ -25,14 +25,20 @@ module.exports = {
       check_name: lint.ruleId,
       description: lint.message,
       content: {
-        body: contentsFor(lint.ruleId),
+        body: contentsFor(lint.ruleId)
       },
       categories: categoriesFor(lint.ruleId),
       location: {
         path: lint.path,
-        begin: {
-          line: lint.line,
-          column: lint.column
+        positions: {
+          begin: {
+            line: lint.line,
+            column: lint.column
+          },
+          end: {
+            line: lint.line,
+            column: lint.column
+          }
         }
       },
       remediation_points: remediationPointsFor(lint.ruleId),
