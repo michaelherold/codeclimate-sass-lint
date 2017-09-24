@@ -60,7 +60,7 @@ To tweak the rules that Sass-Lint will run, follow this pattern in the configura
 
 ```yaml
 engines:
-  sass_lint:
+  sass-lint:
     enabled: true
     config:
       file: my_custom_sass_lint.yml
@@ -73,7 +73,7 @@ exclude_paths:
   - ignored_directory/
 ```
 
-Most of the configuration lives under the `engines.sass_lint` key. The options are as follows:
+Most of the configuration lives under the `engines.sass-lint` key. The options are as follows:
 
 * `config.file` - The Sass-Lint configuration file you want to use as a base.
 * `debug` - Set this to true to output timing and debug information from the engine.
