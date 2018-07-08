@@ -1,6 +1,6 @@
 FROM node:8.5-alpine
 
-LABEL maintainer "Michael J. Herold <michael@michaeljherold.com>"
+LABEL maintainer "Michael J. Herold <opensource@michaeljherold.com>"
 
 WORKDIR /usr/src/app
 COPY engine.json /
