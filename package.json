@@ -31,7 +31,7 @@
     "commander": "^2.11.0",
     "deepmerge": "^1.5.2",
     "glob": "^7.1.2",
-    "sass-lint": "^1.12.0"
+    "sass-lint": "^1.12.1"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",
@@ -41,8 +41,8 @@
     "inchjs": "^0.4.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
-    "mocha": "^3.5.3",
-    "nyc": "^11.2.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "sinon": "^4.0.0",
     "sinon-chai": "^2.14.0",
     "temp-write": "^3.3.0"
