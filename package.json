@@ -7,7 +7,6 @@
     "check": "npm run test && npm run lint",
     "coverage": "nyc report --reporter=lcov",
     "doc": "jsdoc --configure .jsdoc.json --verbose",
-    "inch": "inchjs",
     "lint": "eslint src test",
     "test": "nyc --reporter=html mocha -r ./test/helper --reporter dot",
     "tdd": "mocha -r ./test/helper --reporter dot --watch"
@@ -38,7 +37,6 @@
     "blanket": "^1.2.3",
     "chai": "^4.1.2",
     "eslint": "^4.7.1",
-    "inchjs": "^0.4.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
     "mocha": "^5.2.0",
