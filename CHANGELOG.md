@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Security
 
 * [#3](https://github.com/michaelherold/codeclimate-sass-lint/pull/3): Updated Sinon due to a CVE vulnerability - [@michaelherold].
+* [#10](https://github.com/michaelherold/codeclimate-sass-lint/pull/10): Updated Handlebars, Uglify, and Commander due to a CVE vulnerability - [@michaelherold].
 
 ## [0.12.0-1] - 2017-10-12
 
