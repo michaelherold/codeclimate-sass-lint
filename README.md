@@ -10,6 +10,10 @@ Have you ever wanted to know exactly how good you are at writing consistent Sass
 
 [sass-lint]: https://github.com/sasstools/sass-lint
 
+## Notice: Sunset on 2021-11-19
+
+No one maintains `sass-lint` anymore. It's been this way [since October 2017](https://github.com/sasstools/sass-lint/commit/52ccf2e1fa3e4d17d9f8f7bd748f7caf20830f30). As such, I am sunsetting this project and archiving it on GitHub. In the future, if someone revives the library, this can come out of sunset. But for now it's not worth the maintenance burden to maintain an unchanging piece of software.
+
 ## Want to Help?
 
 Awesome! We strive to be welcoming to everyone. Check out the [contributing guide] and make sure to read our [code of conduct].
