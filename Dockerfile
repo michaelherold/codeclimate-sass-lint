@@ -1,4 +1,4 @@
-FROM node:8.5-alpine
+FROM node:16.13.0-alpine3.12
 
 LABEL maintainer "Michael J. Herold <opensource@michaeljherold.com>"
 

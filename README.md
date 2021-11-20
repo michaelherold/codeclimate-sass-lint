@@ -1,12 +1,10 @@
 # Code Climate Sass-Lint Engine
 
-[![Build Status](https://travis-ci.org/michaelherold/codeclimate-sass-lint.svg)][travis]
-[![Code Climate](https://codeclimate.com/github/michaelherold/codeclimate-sass-lint/badges/gpa.svg)][codeclimate]
+[![Build Status](https://github.com/michaelherold/codeclimate-sass-lint/actions/workflows/ci.yml/badge.svg)](https://github.com/michaelherold/codeclimate-sass-lint/actions/workflows/ci.yml)
 [![Inline docs](http://inch-ci.org/github/michaelherold/codeclimate-sass-lint.svg?branch=master)][inch]
 
-[codeclimate]: https://codeclimate.com/github/michaelherold/codeclimate-sass-lint
+[ci]: https://github.com/michaelherold/codeclimate-sass-lint/actions/workflows/ci.yml
 [inch]: http://inch-ci.org/github/michaelherold/codeclimate-sass-lint
-[travis]: https://travis-ci.org/michaelherold/codeclimate-sass-lint
 
 Have you ever wanted to know exactly how good you are at writing consistent Sass? Well, look no more! By using this Code Climate engine, you can harness the power of [sass-lint] to score your code.
 
