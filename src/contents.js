@@ -38,7 +38,7 @@ module.exports = {
    * @return {string} The Markdown documentation for the rule.
    */
   contentsFor (rule) {
-    if (content.hasOwnProperty(rule)) {
+    if (Object.prototype.hasOwnProperty.call(content, rule)) {
       return content[rule];
     } else {
       return fetchContents(rule);

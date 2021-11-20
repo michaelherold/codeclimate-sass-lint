@@ -83,7 +83,7 @@ module.exports = {
    * @return {string[]}
    */
   categoriesFor (rule) {
-    if (categories.hasOwnProperty(rule)) {
+    if (Object.prototype.hasOwnProperty.call(categories, rule)) {
       return categories[rule];
     } else {
       return ["Style"];
